@@ -23,7 +23,7 @@ const theme = createTheme({
     },
     background: {
       default: "#f7f7f7", // Light grey background for a clean look
-      paper: "#ffffff", // White background for components
+      paper: "#f6f6f6", // White background for components
     },
     text: {
       primary: "#000000", // Black text for high contrast
@@ -108,172 +108,220 @@ function HomePage() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+
+    arrows: false, // Disable arrows
   };
 
   return (
     <ThemeProvider theme={theme}>
+      <AppBar
+        position="static"
+        style={{
+          backgroundColor: "#ffffff",
+          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <Toolbar>
+          <Container
+            maxWidth="lg"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
+            <Logo />
+            <Typography
+              variant="h3"
+              component="h3"
+              gutterBottom
+              style={{
+                fontWeight: "bold",
+              }}
+            >
+              Coming Soon...
+            </Typography>
+          </Container>
+        </Toolbar>
+      </AppBar>
       <div
         style={{
-          minHeight: "100vh",
           backgroundColor: theme.palette.background.default,
           display: "flex",
           flexDirection: "column",
         }}
       >
         {/* Navbar */}
-        <AppBar
-          position="static"
+
+        <Box
           style={{
-            backgroundColor: "#ffffff",
-            boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+            position: "relative", // Ensure the content is relative to the container
+            height: "100vh", // Set the height of the box
+            width: "100%", // Set the width of the box
+            backgroundColor: "rgba(0, 0, 0, 1)",
+            paddingTop:"50px"
           }}
         >
-          <Toolbar>
+          <Box
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              margin: "auto", // Center vertically
+              maxWidth: "1200px", // Limit the maximum width of the section
+              gap: "2rem", // Gap between container
+            }}
+          >
+            <Box
+              sx={{
+                position: "absolute", // Overlay it
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundImage: "url('./food.webp')", // Your background image
+                backgroundSize: "cover", // Cover the container
+                backgroundPosition: "center", // Center the image
+                backgroundRepeat: "no-repeat", // No repeat for the background
+                opacity: 0.5, // Set opacity for the background image
+                zIndex: 1, // Make sure it stays behind the content
+              }}
+            />
+            {/* Hero Section */}
             <Container
-              maxWidth="lg"
-              style={{ display: "flex", justifyContent: "space-between" }}
+              maxWidth="md"
+              style={{
+                textAlign: "center",
+                padding: "4rem 0",
+                position: "relative", // Ensure the content stays above the background
+                zIndex: 2, // Higher zIndex to ensure it's above the background
+                p: 2, // Padding inside the content box
+              }}
             >
-              <Logo />
               <Typography
-                variant="h3"
-                component="h3"
+                variant="h2"
+                component="h2"
                 gutterBottom
                 style={{
                   fontWeight: "bold",
                 }}
               >
-                Coming Soon...
+                Meal to Heal
+              </Typography>
+              <Typography
+                variant="body1"
+                paragraph
+                style={{
+                  color: "#ffffff",
+                  maxWidth: "600px",
+                  margin: "0 auto",
+                }}
+              >
+                Customized nutritious meal plans designed for your specific
+                health needs.
               </Typography>
             </Container>
-          </Toolbar>
-        </AppBar>
-        {/* Hero Section */}
-        <Box
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            margin: "auto", // Center vertically
-            maxWidth: "1200px", // Limit the maximum width of the section
-            gap: "2rem", // Gap between container
-            position: "relative", // Ensure the content is relative to the container
-            height: "500px", // Set the height of the box
-            width: "100%", // Set the width of the box
 
-            backgroundColor: "rgba(0, 0, 0, 1)",
-          }}
-        >
-          <Box
-            sx={{
-              position: "absolute", // Overlay it
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundImage: "url('./food.webp')", // Your background image
-              backgroundSize: "cover", // Cover the container
-              backgroundPosition: "center", // Center the image
-              backgroundRepeat: "no-repeat", // No repeat for the background
-              opacity: 0.5, // Set opacity for the background image
-              zIndex: 1, // Make sure it stays behind the content
-            }}
-          />
-          {/* Hero Section */}
-          <Container
-            maxWidth="md"
-            style={{
-              textAlign: "center",
-              padding: "4rem 0",
-              position: "relative", // Ensure the content stays above the background
-              zIndex: 2, // Higher zIndex to ensure it's above the background
-              p: 2, // Padding inside the content box
-            }}
-          >
-            <Typography
-              variant="h2"
-              component="h2"
-              gutterBottom
+            {/* Contact Form Section */}
+            <Container
+              maxWidth="sm"
               style={{
-                fontWeight: "bold",
+                marginTop: "1rem",
+                marginBottom: "0rem",
+                position: "relative", // Ensure the content stays above the background
+                zIndex: 2, // Higher zIndex to ensure it's above the background
               }}
             >
-              Meal to Heal
-            </Typography>
-            <Typography
-              variant="body1"
-              paragraph
-              style={{
-                color: "#ffffff",
-                maxWidth: "600px",
-                margin: "0 auto",
-              }}
-            >
-              Customized nutritious meal plans designed for your specific health
-              needs.
-            </Typography>
-          </Container>
-
-          {/* Contact Form Section */}
-          <Container
-            maxWidth="sm"
-            style={{
-              marginTop: "0",
-              marginBottom: "0rem",
-              position: "relative", // Ensure the content stays above the background
-              zIndex: 2, // Higher zIndex to ensure it's above the background
-              p: 2, // Padding inside the content box
-            }}
-          >
-            <Box
-              sx={{
-                p: 2,
-                backgroundColor: theme.palette.background.paper,
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                borderRadius: "16px",
-              }}
-            >
-              <Typography
-                variant="h4"
-                gutterBottom
-                style={{ color: "#000000", fontWeight: "bold" }}
+              <Box
+                sx={{
+                  p: 2,
+                  backgroundColor: theme.palette.background.paper,
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  borderRadius: "16px",
+                }}
               >
-                Get in Touch
-              </Typography>
-              <form noValidate onSubmit={handleSubmit}>
-                <TextField
-                  fullWidth
-                  label="Your Name"
-                  InputLabelProps={{ style: { color: "#555555" } }}
-                  required
-                />
-                <TextField
-                  fullWidth
-                  label="Your Email"
-                  type="email"
-                  InputLabelProps={{ style: { color: "#555555" } }}
-                  required
-                />
-                <TextField
-                  fullWidth
-                  label="Your Phone Number"
-                  type="tel"
-                  InputLabelProps={{ style: { color: "#555555" } }}
-                  required
-                />
-                <Button
-                  color="primary"
-                  variant="contained"
-                  fullWidth
-                  type="submit"
-                  style={{ marginTop: "1rem" }}
+                <Typography
+                  variant="h3"
+                  gutterBottom
+                  style={{ color: "#000000", fontWeight: "bold" }}
                 >
-                  Submit
-                </Button>
-              </form>
-            </Box>
+                  Get in Touch
+                </Typography>
+                <form noValidate onSubmit={handleSubmit}>
+                  <TextField
+                    size="small"
+                    fullWidth
+                    label="Your Name"
+                    InputLabelProps={{ style: { color: "#555555" } }}
+                    required
+                  />
+                  <TextField
+                    fullWidth
+                    size="small"
+                    label="Your Email"
+                    type="email"
+                    InputLabelProps={{ style: { color: "#555555" } }}
+                    required
+                  />
+                  <TextField
+                    size="small"
+                    fullWidth
+                    label="Your Phone Number"
+                    type="tel"
+                    InputLabelProps={{ style: { color: "#555555" } }}
+                    required
+                  />
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    fullWidth
+                    type="submit"
+                    style={{ marginTop: "1rem" }}
+                  >
+                    Submit
+                  </Button>
+                </form>
+              </Box>
+            </Container>
+          </Box>
+          {/* Carousel Section */}
+          <Container
+            maxWidth="lg"
+            style={{
+              marginTop: "2rem",
+              position: "relative", // Ensure the content stays above the background
+              zIndex: 2, // Higher zIndex to ensure it's above the background
+              p: 2, // Padding inside the content box
+              
+            }}
+          >
+            <Slider {...carouselSettings}>
+              {carouselItems.map((item, index) => (
+                <Box
+                  key={index}
+                  sx={{
+                    p: 0,
+                    backgroundColor: theme.palette.background.paper,
+                    textAlign: "center",
+                    borderRadius: "16px",
+                  }}
+                >
+                  <Typography
+                    variant="h5"
+                    component="h5"
+                    minWidth="auto"
+                    style={{ color: "#000000", fontWeight: "bold",}}
+                  >
+                    {item.title}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    minWidth="auto"
+                    style={{ color: "#555555", fontSize: "1.1rem",}}
+                  >
+                    {item.description}
+                  </Typography>
+                </Box>
+              ))}
+            </Slider>
           </Container>
         </Box>
-
         {/* Dialog Box */}
         <Dialog open={openDialog} onClose={handleClose}>
           <DialogContent>
@@ -287,39 +335,6 @@ function HomePage() {
             </Button>
           </DialogActions>
         </Dialog>
-
-        {/* Carousel Section */}
-        <Container maxWidth="lg" style={{ marginTop: "2rem" }}>
-          <Slider {...carouselSettings}>
-            {carouselItems.map((item, index) => (
-              <Box
-                key={index}
-                sx={{
-                  p: 0,
-                  backgroundColor: theme.palette.background.paper,
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0)",
-                  borderRadius: "16px",
-                  textAlign: "center",
-                }}
-              >
-                <Typography
-                  variant="h5"
-                  component="h5"
-                  gutterBottom
-                  style={{ color: "#000000", fontWeight: "bold" }}
-                >
-                  {item.title}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  style={{ color: "#555555", fontSize: "1.1rem" }}
-                >
-                  {item.description}
-                </Typography>
-              </Box>
-            ))}
-          </Slider>
-        </Container>
       </div>
     </ThemeProvider>
   );

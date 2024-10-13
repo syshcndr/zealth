@@ -14,8 +14,6 @@ import {
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Slider from "react-slick";
 import Logo from "../Components/Logo";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 // Define a modern light theme with black typography
 const theme = createTheme({

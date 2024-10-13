@@ -23,7 +23,7 @@ const theme = createTheme({
     },
     background: {
       default: "#f7f7f7", // Light grey background for a clean look
-      paper: "#ffffff",   // White background for components
+      paper: "#ffffff", // White background for components
     },
     text: {
       primary: "#000000", // Black text for high contrast
@@ -33,13 +33,18 @@ const theme = createTheme({
   typography: {
     fontFamily: "Arial, sans-serif",
     h2: {
-      fontWeight: 700,
-      fontSize: "3rem",
+      fontWeight: 1000,
+      fontSize: "4rem",
+      color: "#ffffff", // Black header color
+    },
+    h3: {
+      fontWeight: 600,
+      fontSize: "2rem",
       color: "#000000", // Black header color
     },
     body1: {
       color: "#555555", // Dark grey for paragraph text
-      fontSize: "1.1rem",
+      fontSize: "1.5rem",
     },
     button: {
       fontWeight: 600,
@@ -70,7 +75,8 @@ const theme = createTheme({
 const carouselItems = [
   {
     title: "Personalized Nutrition",
-    description: "Tailored meal plans designed by experts to meet your dietary goals.",
+    description:
+      "Tailored meal plans designed by experts to meet your dietary goals.",
   },
   {
     title: "Affordable Pricing",
@@ -128,27 +134,59 @@ function HomePage() {
               style={{ display: "flex", justifyContent: "space-between" }}
             >
               <Logo />
+              <Typography
+                variant="h3"
+                component="h3"
+                gutterBottom
+                style={{
+                  fontWeight: "bold",
+                }}
+              >
+                Coming Soon...
+              </Typography>
             </Container>
           </Toolbar>
         </AppBar>
-
         {/* Hero Section */}
-        <div
+        <Box
           style={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
             margin: "auto", // Center vertically
             maxWidth: "1200px", // Limit the maximum width of the section
-            gap: "2rem", // Gap between containers
+            gap: "2rem", // Gap between container
+            position: "relative", // Ensure the content is relative to the container
+            height: "500px", // Set the height of the box
+            width: "100%", // Set the width of the box
+
+            backgroundColor: "rgba(0, 0, 0, 1)",
           }}
         >
+          <Box
+            sx={{
+              position: "absolute", // Overlay it
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundImage: "url('./food.webp')", // Your background image
+              backgroundSize: "cover", // Cover the container
+              backgroundPosition: "center", // Center the image
+              backgroundRepeat: "no-repeat", // No repeat for the background
+              opacity: 0.5, // Set opacity for the background image
+              zIndex: 1, // Make sure it stays behind the content
+            }}
+          />
           {/* Hero Section */}
           <Container
             maxWidth="md"
             style={{
               textAlign: "center",
               padding: "4rem 0",
+              position: "relative", // Ensure the content stays above the background
+              zIndex: 2, // Higher zIndex to ensure it's above the background
+              p: 2, // Padding inside the content box
             }}
           >
             <Typography
@@ -165,18 +203,26 @@ function HomePage() {
               variant="body1"
               paragraph
               style={{
+                color: "#ffffff",
                 maxWidth: "600px",
                 margin: "0 auto",
               }}
             >
-              Customized nutritious meal plans designed for your specific health needs.
+              Customized nutritious meal plans designed for your specific health
+              needs.
             </Typography>
           </Container>
 
           {/* Contact Form Section */}
           <Container
             maxWidth="sm"
-            style={{ marginTop: "0", marginBottom: "0rem" }}
+            style={{
+              marginTop: "0",
+              marginBottom: "0rem",
+              position: "relative", // Ensure the content stays above the background
+              zIndex: 2, // Higher zIndex to ensure it's above the background
+              p: 2, // Padding inside the content box
+            }}
           >
             <Box
               sx={{
@@ -226,7 +272,7 @@ function HomePage() {
               </form>
             </Box>
           </Container>
-        </div>
+        </Box>
 
         {/* Dialog Box */}
         <Dialog open={openDialog} onClose={handleClose}>
